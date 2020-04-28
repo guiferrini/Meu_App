@@ -9,7 +9,7 @@ const PORT = 3333;
 
 const imobiliarias = [];
 
-app.get('/', (request, response) => {
+app.get('/imobiliarias', (request, response) => {
   return response.json(imobiliarias);
 });
 
@@ -27,6 +27,33 @@ app.post('/imobiliarias', (request, response) => {
   imobiliarias.push(imobiliaria);
 
   return response.json(imobiliarias);
+})
+
+app.put('/imobiliarias/:id', (request, response) => {
+  const { id } = request.params;
+  const { nome, contato, email, telefone } = request.body;
+
+  const imobiliariafind = imobiliarias.find(imobiliaria => 
+    imobiliaria.id === id
+  );
+
+  if (!imobiliariafind) {
+    return response.status(400).json({
+      error: 'ID da imobiliaria não localizado'
+    });
+  }
+
+  const imobiliaria = {
+    id,
+    nome,
+    contato,
+    email,
+    telefone
+  };
+ 
+  imobiliarias[imobiliariafind] = imobiliaria;
+
+  return response.json(imobiliaria);
 })
 
 app.listen(PORT, () => {
