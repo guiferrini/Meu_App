@@ -1,4 +1,5 @@
 const express = require('express');
+const { uuid } = require('uuidv4');
 
 const app = express();
 
@@ -13,9 +14,19 @@ app.get('/', (request, response) => {
 });
 
 app.post('/imobiliarias', (request, response) => {
-  const imobiliaria = request.body;
+  const { nome, contato, email, telefone } = request.body;
 
-  
+  const imobiliaria = {
+    id: uuid(),
+    nome,
+    contato,
+    email,
+    telefone
+  };
+
+  imobiliarias.push(imobiliaria);
+
+  return response.json(imobiliarias);
 })
 
 app.listen(PORT, () => {
