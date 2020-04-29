@@ -70,6 +70,24 @@ app.put('/imobiliarias/:id', (request, response) => {
   return response.json(imobiliaria);
 })
 
+app.delete('/imobiliarias/:id', (request, response) => {
+  const { id } = request.params;
+
+  const imobiliariafind = imobiliarias.findIndex(imobiliaria => 
+    imobiliaria.id === id
+  ); 
+ // Valida se ID da imobiliaria existe/localizar no array
+  if (imobiliariafind < 0) {
+    return response.status(400).json({
+      error: 'ID da imobiliaria não localizado'
+    });
+  } 
+
+  imobiliarias.splice(imobiliariafind, 1);
+
+  return response.status(202).json({ message: `Imobiliaria apagada.` });
+})
+
 app.listen(PORT, () => {
   console.log(`✔ Server start at port ${PORT}. ✅`)
 });
