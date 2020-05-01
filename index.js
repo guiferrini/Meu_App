@@ -146,6 +146,23 @@ app.put('/casas/:id', (request, response) => {
   return response.json(casa);
 });
 
+app.delete('/casas/:id', (request, response) => {
+  const { id } = request.params;
+
+  const casasfind = casas.findIndex(casa => casa.id === id);
+
+  // Validar se casa existe no array
+  if (casasfind < 0) {
+    return response.status(400).json({ 
+      error: 'ID da casa não localizado' 
+    });
+  }
+
+  casas.splice(casasfind, 1);
+
+  return response.status(202).json({ message: 'Casa apagada' });
+});
+
 app.listen(PORT, () => {
   console.log(`✔ Server start at port ${PORT}. ✅`)
 });
