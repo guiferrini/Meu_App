@@ -90,6 +90,10 @@ app.delete('/imobiliarias/:id', (request, response) => {
 })
 
 // ---- Casas
+app.get('/casas', (request, response) => {
+  return response.json(casas);
+});
+
 app.post('/casas', (request, response) => {
   const { endereco, inquilino, valor_aluguel } = request.body;
 
