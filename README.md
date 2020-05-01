@@ -4,6 +4,6 @@ Projeto pessoasl: Controle de casas de aluguel e suas respectivas imobiliarias r
 
 Tecnologia: node.js
 
-Feito e funcionando CRUD das Imobiliarias.
+Feito e funcionando CRUD das Imobiliarias e das Casas.
 
 
