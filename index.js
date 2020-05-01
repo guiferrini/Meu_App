@@ -8,6 +8,7 @@ app.use(express.json());
 const PORT = 3333;
 
 const imobiliarias = [];
+const casas = [];
 
 // ---- Middleware
 // Valida se ID da imobiliaria é valido
@@ -21,7 +22,7 @@ function validateImobiliariaId(request, response, next) {
 }
 
 app.use('/imobiliarias/:id', validateImobiliariaId);
-// ----
+// ---- Imobiliarias
 
 app.get('/imobiliarias', (request, response) => {
   return response.json(imobiliarias);
@@ -87,6 +88,22 @@ app.delete('/imobiliarias/:id', (request, response) => {
 
   return response.status(202).json({ message: `Imobiliaria apagada.` });
 })
+
+// ---- Casas
+app.post('/casas', (request, response) => {
+  const { endereco, inquilino, valor_aluguel } = request.body;
+
+  const casa = {
+    id: uuid(), 
+    endereco,
+    inquilino,
+    valor_aluguel
+  };
+
+  casas.push(casa);
+
+  return response.json(casa);
+});
 
 app.listen(PORT, () => {
   console.log(`✔ Server start at port ${PORT}. ✅`)
