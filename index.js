@@ -21,7 +21,19 @@ function validateImobiliariaId(request, response, next) {
   return next();
 }
 
+// Validando se ID da casa é válido
+function validateCasaID(request, response, next) {
+  const { id } = request.params;
+
+  if (!isUuid(id)) {
+    return response.status(400).json({ error: "ID casa invalido" })
+  }
+  return next();
+}
+
+
 app.use('/imobiliarias/:id', validateImobiliariaId);
+app.use('/casas/:id', validateCasaID);
 // ---- Imobiliarias
 
 app.get('/imobiliarias', (request, response) => {
@@ -105,6 +117,31 @@ app.post('/casas', (request, response) => {
   };
 
   casas.push(casa);
+
+  return response.json(casa);
+});
+
+app.put('/casas/:id', (request, response) => {
+  const { id } = request.params;
+  const { endereco, inquilino, valor_aluguel } = request.body;
+
+  const casasfind = casas.findIndex(casa => casa.id === id);
+
+  // Validando se o ID da imobiliaria existe no array
+  if (casasfind < 0) {
+    return response.status(400).json({ 
+      error: 'ID da casa não localizado' 
+    });
+  }
+
+  const casa = {
+    id,
+    endereco,
+    inquilino,
+    valor_aluguel,
+  }
+
+  casas[casasfind] = casa;
 
   return response.json(casa);
 });
