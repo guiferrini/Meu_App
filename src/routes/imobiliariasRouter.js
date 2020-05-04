@@ -22,7 +22,11 @@ imobiliariasRoutee.post('/', (request, response) => {
   const { nome, contato, email, telefone } = request.body;
 
   //vefificar se imobiliaria existe/foi criada anteriormente.
-  
+  for(let i=0; i<imobiliarias.length; i++){
+    if(imobiliarias[i].nome === nome) {
+      return response.status(400).json({ message: 'Imobiliaria já cadastrada' });
+    }
+  }
 
   const imobiliaria = {
     id: uuid(),
