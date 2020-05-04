@@ -1,30 +1,23 @@
 const express = require('express');
 const { uuid, isUuid } = require('uuidv4');
 
-const imobiliariasRoutee = express.Router();
+const imobiliariasRoute = express.Router();
 
 const imobiliarias = [];
-/*
-// ---- Middleware
-// Valida se ID da imobiliaria é valido
-function validateImobiliariaId(request, response, next) {
-  const { id } = request.params
 
-  if (!isUuid(id)) {
-    return response.status(400).json({ error: "ID imobiliaria invalido" })
-  }
-  return next();
-}
+imobiliariasRoute.get('/', (request, response) => {
+  return response.json(imobiliarias);
+});
 
-express.use('/imobiliarias/:id', validateImobiliariaId);
-*/
-imobiliariasRoutee.post('/', (request, response) => {
+imobiliariasRoute.post('/', (request, response) => {
   const { nome, contato, email, telefone } = request.body;
 
   //vefificar se imobiliaria existe/foi criada anteriormente.
   for(let i=0; i<imobiliarias.length; i++){
     if(imobiliarias[i].nome === nome) {
-      return response.status(400).json({ message: 'Imobiliaria já cadastrada' });
+      return response
+      .status(400)
+      .json({ message: 'Imobiliaria já cadastrada' });
     }
   }
 
@@ -41,4 +34,4 @@ imobiliariasRoutee.post('/', (request, response) => {
   return response.json(imobiliaria);
 });
 
-module.exports = imobiliariasRoutee;
+module.exports = imobiliariasRoute;
