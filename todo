@@ -1,0 +1,5 @@
+2 Tabelas: Imobiliarias (ok tabela, gerar BD) e Casas(ok tabela, gerar BD).
+Será possível: 
+  - informação da Imobiliaria (Nome, telefone, pessoas de contato e email)
+  - casa (Imobiliaria responsável, valor do imovel, data do pagamento, vencimento do contrato e nome do inquilino)
+  - gerar um tabela com as informações por casa ou imobiliaria

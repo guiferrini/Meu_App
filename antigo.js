@@ -73,7 +73,7 @@ app.put('/imobiliarias/:id', (request, response) => {
   } 
 
   const imobiliaria = {
-    id,
+    id: uuid(), 
     nome,
     contato,
     email,
@@ -165,6 +165,6 @@ app.delete('/casas/:id', (request, response) => {
   return response.status(202).json({ message: 'Casa apagada' });
 });
 
-app.listen(PORT, () => {
-  console.log(`✔ Server start at port ${PORT}. ✅`)
-});
+//app.listen(PORT, () => {
+  //console.log(`✔ Server start at port ${PORT}. ✅`)
+//});

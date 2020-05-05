@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "192.168.99.100",
+  "port": 5435,
+  "username": "postgres",
+  "password": "docker",
+  "database": "meu_app",
+  "entities": ["./src/models/*.js"],
+  "migrations": ["./src/database/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}
