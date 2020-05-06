@@ -1,9 +1,15 @@
-const express = require('express');
+import { Router } from 'express';
+
 const { uuid, isUuid } = require('uuidv4');
 
-const imobiliariasRoute = express.Router();
+const imobiliariasRoute = Router();
 
-const imobiliarias = [];
+const imobiliarias: { 
+  nome: string; 
+  contato: string, 
+  email: string, 
+  telefone: string 
+}[] = [];
 
 imobiliariasRoute.get('/', (request, response) => {
   return response.json(imobiliarias);
@@ -34,4 +40,4 @@ imobiliariasRoute.post('/', (request, response) => {
   return response.json(imobiliaria);
 });
 
-module.exports = imobiliariasRoute;
+export default imobiliariasRoute;

@@ -12,7 +12,7 @@ export default class CreateImobiliarias1588702307031 implements MigrationInterfa
                         type: 'uuid',
                         isPrimary: true,
                         generationStrategy: 'uuid',
-                        default: 'uuid_generete_v4()',
+                        default: 'uuid_generate_v4()',
                     },
                     {
                         name: 'nome',

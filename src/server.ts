@@ -1,10 +1,9 @@
-const express = require('express');
+import express from 'express';
 
-//const routes = express.Router();
-const routes = require('./routes');
+import routes from './routes';
 
 const app = express();
-
+ 
 app.use(express.json());
 app.use(routes);
 

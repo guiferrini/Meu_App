@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export default class CreateCasas1588703032351 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<any> {
+    public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
                 name: 'casas',
@@ -15,7 +15,7 @@ export default class CreateCasas1588703032351 implements MigrationInterface {
                         default: 'uuid_generate_v4()',
                     },
                     {
-                        name: 'endereço',
+                        name: 'endereco',
                         type: 'varchar',
                     },
                     {
@@ -23,8 +23,12 @@ export default class CreateCasas1588703032351 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'inicio_e_fim',
-                        type: 'varchar',
+                        name: 'inicio',
+                        type: 'date',
+                    },
+                    {
+                        name: 'fim',
+                        type: 'date',
                     },
                     {
                         name: 'valor',
@@ -47,7 +51,7 @@ export default class CreateCasas1588703032351 implements MigrationInterface {
         );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<any> {
+    public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('casas');
     }
 

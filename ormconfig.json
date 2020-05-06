@@ -5,8 +5,8 @@
   "username": "postgres",
   "password": "docker",
   "database": "meu_app",
-  "entities": ["./src/models/*.js"],
-  "migrations": ["./src/database/migrations/*.js"],
+  "entities": ["./src/models/*.ts"],
+  "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }

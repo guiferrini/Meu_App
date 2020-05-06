@@ -2,7 +2,7 @@ import {MigrationInterface, QueryRunner, TableColumn, TableForeignKey } from "ty
 
 export default class AddColumnIDCasasToImobiliariasForeignKey1588703943912 implements MigrationInterface {
 
-    public async up(queryRunner: QueryRunner): Promise<any> {
+    public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.addColumn(
             'imobiliarias',
             new TableColumn({
@@ -25,7 +25,7 @@ export default class AddColumnIDCasasToImobiliariasForeignKey1588703943912 imple
         );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<any> {
+    public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey('imobiliarias', 'conexao');
         await queryRunner.dropColumn('imobiliarias', 'nome_id');
     }
