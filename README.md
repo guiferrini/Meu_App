@@ -2,8 +2,18 @@
 Meu_App
 Projeto pessoasl: Controle de casas de aluguel e suas respectivas imobiliarias responsáveis.
 
-Tecnologia: node.js
+Tecnologia: node.js, typescript, typeORM.
 
-Feito e funcionando CRUD das Imobiliarias e das Casas.
+Criado: 
+-server, 
+-routes (imobiliaria), 
+-models(imobiliaria e casa),
+-reporitory(imobiliarias),
+-database(migrations:imobiliarias, casas e foreignkey)
+
+CRUD
+imobiliarias: POST, GET
+
+Conteudo privado e criado por Guilherme Ferrini 2020.
 
 
