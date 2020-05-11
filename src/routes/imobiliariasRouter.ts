@@ -4,6 +4,7 @@ import { getCustomRepository } from 'typeorm';
 
 import ImobiliariasRepository from '../repositories/ImobiliariasRepository';
 import CreateImobiliariasService from '../services/CreateImobiliariasService';
+import DeleteImobiliariaService from '../services/DeleteImobiliariaService';
 
 const { uuid, isUuid } = require('uuidv4');
 
@@ -25,7 +26,7 @@ imobiliariasRoute.post('/', async (request, response) => {
   const imobiliariasRepository = getCustomRepository(ImobiliariasRepository);
 
   const imobiliarias = await imobiliariasRepository.find();
-  
+
   //vefificar se imobiliaria existe/foi criada anteriormente.
   for(let i=0; i<imobiliarias.length; i++){
     if(imobiliarias[i].nome === nome) {
@@ -46,6 +47,16 @@ imobiliariasRoute.post('/', async (request, response) => {
   //imobiliarias.push(imobiliaria);
 
   return response.json(imobiliaria);
+});
+
+imobiliariasRoute.delete('/:id', async (request, response) => {
+  const { id } = request.params;
+
+  const deleteImobiliaria = new DeleteImobiliariaService();
+
+  await deleteImobiliaria.execute(id);
+
+  return response.status(200).json({ message: 'Imobiliaria Apagada' });
 });
 
 export default imobiliariasRoute;
