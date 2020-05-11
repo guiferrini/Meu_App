@@ -17,6 +17,9 @@ class CreateImobiliariaService {
   }: Request): Promise<Imobiliaria> {
     const imobiliariasRepository = getCustomRepository(ImobiliariasRepository);
 
+    
+    //const verificarNome = await imobiliariasRepository.findOne{( where: { nome } )}
+  
     const imobiliaria = imobiliariasRepository.create({
       nome, contato, email, telefone
     });

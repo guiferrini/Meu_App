@@ -4,7 +4,7 @@ import {
   UpdateDateColumn, 
 } from 'typeorm';
 
-import Casas from './Casas';
+import Casa from './Casas';
 
 @Entity('imobiliarias')
 class Imobiliaria {
@@ -23,8 +23,14 @@ class Imobiliaria {
   @Column()
   email: String;
 
-  @ManyToOne(() => Casas)
+  // mtos imobiliaraias p 1 casa
+  @ManyToOne(() => Casa)
+  // Uma função q retorna qual é o model q deve utilizar qdo a variavel for chamada
   @JoinColumn({ name: 'nome_id' })
+  // Qual coluna vai identificar qual q eh o usuario do agendamento
+  casa: Casa
+
+  @Column()
   nome_id: String;
  
   @CreateDateColumn()

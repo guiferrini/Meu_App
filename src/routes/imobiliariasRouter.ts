@@ -22,14 +22,18 @@ imobiliariasRoute.post('/', async (request, response) => {
 
   const createImobiliaria = new CreateImobiliariasService();
 
+  const imobiliariasRepository = getCustomRepository(ImobiliariasRepository);
+
+  const imobiliarias = await imobiliariasRepository.find();
+  
   //vefificar se imobiliaria existe/foi criada anteriormente.
-  //for(let i=0; i<imobiliarias.length; i++){
-    //if(imobiliarias[i].nome === nome) {
-      //return response
-      //.status(400)
-      //.json({ message: 'Imobiliaria já cadastrada' });
-    //} 
-  //}
+  for(let i=0; i<imobiliarias.length; i++){
+    if(imobiliarias[i].nome === nome) {
+      return response
+      .status(400)
+      .json({ message: 'Imobiliaria já cadastrada' });
+    } 
+  }
 
   const imobiliaria = await createImobiliaria.execute({
     //id: uuid(),

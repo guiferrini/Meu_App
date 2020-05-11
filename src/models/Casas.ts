@@ -1,12 +1,12 @@
 import { 
-  Entity, PrimaryColumn, Column,
+  Entity, PrimaryGeneratedColumn, Column,
   CreateDateColumn, UpdateDateColumn, 
 } from 'typeorm';
 
 
 @Entity('casas')
 class Casa {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id: String;
 
   @Column()
